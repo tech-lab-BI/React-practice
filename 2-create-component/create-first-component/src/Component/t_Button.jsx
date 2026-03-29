@@ -1,5 +1,5 @@
 function Test_but() {
-    return <h1>click me</h1>
+    return <button>click me</button>
 }
 
 export default Test_but;
