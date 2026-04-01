@@ -1,7 +1,8 @@
 
 function App() {
+  let Items = ["apple", "banana", "guava"];
   return <>
-  fragment :: allows grouping of multiple elements without extra DOM nodes e.g.. div
+    {Items.map(item => <li key={item}>{item}</li>)}
   </>
 }
 
