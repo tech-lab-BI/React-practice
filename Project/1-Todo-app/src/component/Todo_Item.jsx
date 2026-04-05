@@ -1,13 +1,20 @@
-function Todo_Item() {
-  return (
-    <div class="row def-row">
-      <div class="col-6">Ready for college</div>
-      <div class="col-4">24/3/2026</div>
+function Todo_Item({item}) {
+  return (<>
+    {item.map((data)=><div class="row def-row">
+      <div class="col-6">{data.todoName}</div>
+      <div class="col-4">{data.todoDate}</div>
       <div class="col-2">
         <button type="button" class="btn btn-danger">Delete</button>
       </div>
-    </div>
-  );
+    </div>)}
+    {/* <div class="row def-row">
+      <div class="col-6">{item.todoName}</div>
+      <div class="col-4">{item.todoDate}</div>
+      <div class="col-2">
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div> */}
+  </>);
 }
 
 export default Todo_Item;
