@@ -1,9 +1,9 @@
 import style from './BodyCal.module.css';
 import ButtonCal from './ButtonCal';
 
-function BodyCal(){
+function BodyCal(props){
     return (<div className={style.buttonContainer}>
-      <ButtonCal></ButtonCal>
+      <ButtonCal buttonArray={props.buttonArray} handleButtonClick={props.handleButtonClick}></ButtonCal>
     </div>);
 }
 

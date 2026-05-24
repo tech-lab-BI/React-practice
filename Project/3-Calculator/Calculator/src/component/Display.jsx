@@ -1,8 +1,8 @@
 import style from "./Display.module.css";
 
-function Display(){
+function Display(props){
     return (<>
-        <input className={style.display}></input>    
+        <input className={style.display} value={props.displayValue} readOnly></input>    
     </>);
 }
 

@@ -3,5 +3,8 @@
   margin: 2px;
   height: 60px;
   width: 80px;
-  border-radius: 60px;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 500;
+  background-color: rgb(155, 119, 189);
 }
