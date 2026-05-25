@@ -1,12 +1,14 @@
-function Todo_Item({ item }) {
+function Todo_Item({ item , onDeleteButton}) {
   return (
     <>
-      {item.map((data) => (
-        <div class="row def-row">
-          <div class="col-6">{data.todoName}</div>
-          <div class="col-4">{data.todoDate}</div>
-          <div class="col-2">
-            <button type="button" class="btn btn-danger">
+      {item.map((data, index) => (
+        <div className="row def-row" key={index}>
+          <div className="col-6">{data.todoName}</div>
+          <div className="col-4">{data.todoDate}</div>
+          <div className="col-2">
+            <button type="button" className="btn btn-danger"
+              onClick={() => onDeleteButton(data.todoName)}
+            >
               Delete
             </button>
           </div>

@@ -1,14 +1,40 @@
-function App_Function() {
+import { useState } from "react"; 
+
+function App_Function(props) {
+
+  let [todoName, setTodoName] = useState("");
+  let [dueDate, setDueDate] = useState("");
+
+  function handleTodoName(event){
+    setTodoName(event.target.value);
+  }
+  function handleDueDate(event){
+    setDueDate(event.target.value);
+  }
+  function handleAddButton(){
+    props.onAddTask(todoName ,dueDate);
+    setTodoName("");
+    setDueDate("");
+  }
+
   return (
-    <div class='row def-row'>
-      <div class="col-6">
-        <input type="text" placeholder="Enter task Here"></input>
+    <div className='row def-row'>
+      <div className="col-6">
+        <input type="text" placeholder="Enter task Here"
+          onChange={handleTodoName}
+          value={todoName}
+        ></input>
       </div>
-      <div class="col-4">
-        <input type="date"></input>
+      <div className="col-4">
+        <input type="date"
+          onChange={handleDueDate}
+          value={dueDate}
+        ></input>
       </div>
-      <div class="col-2">
-        <button type="button" class="btn btn-success">
+      <div className="col-2">
+        <button type="button" className="btn btn-success"
+          onClick={handleAddButton}
+        >
           Add
         </button>
       </div>
