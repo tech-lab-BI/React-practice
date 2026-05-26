@@ -1,0 +1,19 @@
+h1 {
+    margin-bottom: 5%;
+    font-weight: 700;
+    font-size: 40px;
+    font-style: italic;
+}
+
+center{
+    margin: 5% 10% 0% 10%;
+}
+
+input {
+    width: 100%;
+}
+
+.def-row {
+    margin: 1% 0% 1% 0%;
+    text-align: left;
+}
