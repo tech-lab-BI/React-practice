@@ -9,29 +9,24 @@ import styles from './App.module.css';
 
 function App() {
 
-  const [todoList, setTodoList] = useState([
-    {
-      name : "buy ghee",
-      date : "today",
-    }
-  ]);
+  const [todoList, setTodoList] = useState([]);
 
   let [todoName, setTodoName] = useState("");
   let todoDate = useRef("");
 
-  function handleSubmit(){
+  function handleSubmit(event){
     event.preventDefault();
     let newTask = {
       name : todoName,
       date : todoDate.current.value,
     }
     setTodoList([...todoList, newTask]);
-    console.log(newTask);
-    console.log(todoList);
+    setTodoName("");
+    todoDate.current.value = "";
   }
   function handleDelete(event){
-    deleteIndex = event.currentTarget.getAttribute('data-index');
-    setTodoList(todoList.filter((index) => (index !== deleteIndex)))
+    let deleteIndex = event.currentTarget.getAttribute('data-index');
+    setTodoList(todoList.filter((item, index) => (index != deleteIndex)));
   }
 
   return (<div className={styles.page}>
@@ -42,7 +37,15 @@ function App() {
       handleSubmit={handleSubmit}
       ></FormField>
       {todoList.length === 0 && <EmptyMessage/>}
-      {todoList.map((item, index)=>(<TodoItem key={index} todoName={item.name} todoDate={item.date}></TodoItem>))}
+      {todoList.map((item, index)=>(<TodoItem key={index} 
+      todoName={item.name} 
+      todoDate={item.date}
+      index={index}
+      handleDelete={handleDelete}
+      ></TodoItem>))}
+      {todoList.length !== 0 && <button
+      onClick={() => setTodoList([])}
+      >Clear all</button>}
     </div>);
 }
 

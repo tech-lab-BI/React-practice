@@ -7,7 +7,8 @@ function TodoItem(props){
         <span className={styles.itemDate}>{props.todoDate}</span>
         <button type="button" 
         class="btn btn-outline-danger"
-        onClick={(e) => handleDelete(e)}
+        data-index={props.index}
+        onClick={props.handleDelete}
         >Delete<MdDeleteForever /></button>
     </div>);
 }
