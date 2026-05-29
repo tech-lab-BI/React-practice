@@ -1,20 +1,24 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { MdAddToQueue } from "react-icons/md";
+import Todo_Item from "./Todo_Item";
 
-function App_Function(props) {
+import ItemList from "../context/ItemList";
+
+function App_Function() {
 
   let todoName = useRef();
   let dueDate = useRef();
+  let data = useContext(ItemList);
 
   function handleSubmit(event){
     event.preventDefault();
-    props.onAddTask(todoName.current.value ,dueDate.current.value);
+    // props.handleNewItem(todoName.current.value ,dueDate.current.value);
+    data.handleNewItem(todoName.current.value ,dueDate.current.value);
     todoName.current.value = "";
     dueDate.current.value = "";
   }
 
-  return (
-    <form className='row def-row' onSubmit={handleSubmit}>
+  return (<form className='row def-row' onSubmit={handleSubmit}>
       <div className="col-6">
         <input 
           type="text" 
@@ -33,8 +37,7 @@ function App_Function(props) {
           <MdAddToQueue />
         </button>
       </div>
-    </form>
-  );
+    </form>);
 }
 
 export default App_Function;

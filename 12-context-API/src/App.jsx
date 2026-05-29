@@ -1,8 +1,8 @@
 import App_Function from "./component/App_Function"
-import Title from "./component/Title"
 import Todo_Item from "./component/Todo_Item"
-import "./App.css"
 import { useState } from "react";
+
+import ItemList from "./context/ItemList";
 
 function App() {
 
@@ -21,11 +21,23 @@ function App() {
     setTaskItems(newTodoItems);
   }
 
-  return <center>
-    <Title taskItems={taskItems}/>
-    <App_Function onAddTask={handleNewItem}/>
-    <Todo_Item item={taskItems} onDeleteButton={handleDeleteButton}></Todo_Item>
-  </center>
+  let ob = {
+    items : taskItems,
+    handleNewItem : handleNewItem,
+    handleDeleteButton : handleDeleteButton,
+  }
+
+
+  return (<div>
+
+    <h1>ToDo React App</h1>
+    {taskItems.length === 0 && <p>Enjoy, no pending task</p>}
+    <ItemList.Provider value={ob}>
+      <App_Function/>
+      <Todo_Item></Todo_Item>
+    </ItemList.Provider>
+    
+  </div>);
 }
 
 export default App;
