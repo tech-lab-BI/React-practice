@@ -9,6 +9,11 @@ function App_Function() {
   let todoName = useRef();
   let dueDate = useRef();
   let data = useContext(ItemList);
+  // data{
+  //   items : taskItems,
+  //   handleNewItem : handleNewItem,
+  //   handleDeleteButton : handleDeleteButton,
+  // }
 
   function handleSubmit(event){
     event.preventDefault();

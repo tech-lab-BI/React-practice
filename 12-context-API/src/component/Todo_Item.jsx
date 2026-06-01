@@ -6,6 +6,11 @@ import ItemList from "../context/ItemList";
 function Todo_Item() {
 
   let data = useContext(ItemList);
+  // data{
+  //   items : taskItems,
+  //   handleNewItem : handleNewItem,
+  //   handleDeleteButton : handleDeleteButton,
+  // }
 
   return (
     <>
