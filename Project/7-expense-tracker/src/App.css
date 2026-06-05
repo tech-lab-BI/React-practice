@@ -1,0 +1,15 @@
+*{
+    background-color: aqua;
+}
+.expense-dashboard-badge{
+    margin: 20px;
+}
+.expense-function{
+    margin: 20px;
+}
+.expense-table{
+    margin-left: 25%;
+}
+.expense-table-parameter{
+    width: 150px;
+}
