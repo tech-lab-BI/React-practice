@@ -1,33 +1,25 @@
-import { useReducer } from "react";
+import { useEffect, useState } from "react";
 
-function setFun(state, action){
-  switch(action.opt){
-    case "1":
-      state = [...state, action.parameter];
-      break;
-    case '2':
-      state = [...state, action.parameter];
-      break;
-    default:
-      console.log("default");
-  }
-  return state;
-}
+function App() {
 
-function App(){
-  const [item, changeVal] = useReducer(setFun, ["BIKI - "]);
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    console.log("Hi");
+    return () => {setCount(0);
+      console.log("end");
+    }
+  }, [count])
+
+  // function handleClick(){
+  //   console.log("Hi");
+  //   setCount(count+1);
+  // }
 
   return (<>
-    <button onClick={() => changeVal({
-      opt: "1",
-      parameter: "a ",
-    })}>Add +</button>
-    <button onClick={() => changeVal({
-      opt: "2",
-      parameter: "b ",
-    })}>Delete -</button>
-    <p>{item}</p>
+    <h1>Hello</h1>
+    <button onClick={()=> setCount(count+1)}>click{count}</button>
+    {/* <button onClick={handleClick}>click{count}</button> */}
   </>);
 }
-
 export default App;
