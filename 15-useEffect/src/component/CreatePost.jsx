@@ -13,14 +13,13 @@ function CreatePost() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let id = Date.now().toString(36);
     let title = titleElement.current.value;
     let body = bodyElement.current.value;
     let reactions = reactionElement.current.value;
     let userID = userIDElement.current.value;
     let tags = tagsElement.current.value.split(" ");
 
-    addPost(id, title, body, reactions, userID, tags);
+    addPost(title, body, reactions, userID, tags);
     alert("Post upload successfully, check Home tab");
 
     titleElement.current.value = "";
@@ -89,31 +88,6 @@ function CreatePost() {
             ref={tagsElement}
           />
         </div>
-
-        {/* <div className="mb-3 form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="yes"
-            onClick={() => {
-              notification = "on"
-            }}
-          />
-          <label className="form-check-label" htmlFor="yes">
-            Yes
-          </label>
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="no"
-            onClick={() => {
-              notification = "on"
-            }}
-          />
-          <label className="form-check-label" htmlFor="no">
-            No
-          </label>
-        </div> */}
         <button type="submit" className="btn btn-primary">
           Post my Content
         </button>

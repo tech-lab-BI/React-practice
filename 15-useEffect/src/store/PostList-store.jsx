@@ -26,22 +26,12 @@ function reducer(state, action) {
 
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(reducer, []);
-  useEffect(()=>{
-    fetch("https://dummyjson.com/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        dispatchPostList({
-          type: "ADD_BULK",
-          payload: data.posts,
-        });
-      });
-  }, []);
 
-  const addPost = (id, title, body, reactions, userID, tags) => {
+  const addPost = (title, body, reactions, userID, tags) => {
     dispatchPostList({
       type: "ADD",
       payload: {
-        id: id,
+        id: Date.now().toString(36),
         title: title,
         body: body,
         reactions: reactions,
@@ -53,21 +43,20 @@ const PostListProvider = ({ children }) => {
   const deletePost = (postID) => {
     dispatchPostList({ type: "DELETE", payload: postID });
   };
-  // const getBulkPost = () => {
-  //   fetch("https://dummyjson.com/posts")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       dispatchPostList({
-  //         type: "ADD_BULK",
-  //         payload: data.posts,
-  //       });
-  //     });
-  // };
+  const getBulkPost = () => {
+    fetch("https://dummyjson.com/posts")
+      .then((res) => res.json())
+      .then((data) => {
+        dispatchPostList({
+          type: "ADD_BULK",
+          payload: data.posts,
+        });
+      });
+  };
 
   return (
     <PostListContext.Provider
-      // value={{ postList, addPost, getBulkPost, deletePost }}
-      value={{ postList, addPost, deletePost }}
+      value={{ postList, addPost, getBulkPost, deletePost }}
     >
       {children}
     </PostListContext.Provider>

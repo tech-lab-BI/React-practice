@@ -10,18 +10,17 @@ function EmptyPost() {
         <div className="col-lg-6 mx-auto">
           {" "}
           <p className="lead mb-4">
-            There is no post , you may choose to get post from server for click
-            below button
+            There is no post , you may choose to get post from server
           </p>{" "}
           <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
             {" "}
-            {/* <button
+            <button
               type="button"
               className="btn btn-primary btn-lg px-4 gap-3"
               onClick={() => getBulkPost()}
             >
               Get Post
-            </button> */}
+            </button>
           </div>{" "}
         </div>{" "}
       </div>
