@@ -1,25 +1,30 @@
-import { useEffect, useState } from "react";
+import { useState, useMemo } from "react";
 
 function App() {
-
   const [count, setCount] = useState(0);
-  
-  useEffect(() => {
-    console.log("Hi");
-    return () => {setCount(0);
-      console.log("end");
-    }
-  }, [count])
+  let square;
+  // const square = useMemo(() => {
+  //   console.log("Calculating...");
+  //   return count * count;
+  // }, [count]);
 
-  // function handleClick(){
-  //   console.log("Hi");
-  //   setCount(count+1);
-  // }
+  function squareNum() {
+    square = count * count;
+  }
 
-  return (<>
-    <h1>Hello</h1>
-    <button onClick={()=> setCount(count+1)}>click{count}</button>
-    {/* <button onClick={handleClick}>click{count}</button> */}
-  </>);
+  return (
+    <>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+          squareNum();
+        }}
+      >
+        Count {count}
+      </button>
+      <h1>Square: {square}</h1>
+    </>
+  );
 }
+
 export default App;
