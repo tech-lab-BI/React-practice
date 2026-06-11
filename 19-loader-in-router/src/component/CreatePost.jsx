@@ -1,0 +1,114 @@
+import { useContext, useRef } from "react";
+import { PostListContext } from "../store/PostList-store";
+import { useNavigate } from "react-router-dom";
+
+function CreatePost() {
+  const { addPost } = useContext(PostListContext);
+  const navigate = useNavigate();
+
+  const titleElement = useRef();
+  const bodyElement = useRef();
+  const reactionElement = useRef();
+  const userIDElement = useRef();
+  const tagsElement = useRef();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    let title = titleElement.current.value;
+    let body = bodyElement.current.value;
+    let reactions = reactionElement.current.value;
+    let userID = userIDElement.current.value;
+    let tags = tagsElement.current.value.split(" ");
+
+    titleElement.current.value = "";
+    bodyElement.current.value = "";
+    reactionElement.current.value = "";
+    userIDElement.current.value = "";
+    tagsElement.current.value = "";
+
+    fetch("https://dummyjson.com/posts/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: title,
+        userId: 5,
+        body: body,
+        reactions: reactions,
+        tags: tags,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        addPost(data);
+        // alert("Post upload successfully, check Home tab");
+        navigate("/");
+      });
+  }
+
+  return (
+    <>
+      <form className="post-create-form" onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="user-id" className="form-label">
+            Your User-ID
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="user-id"
+            placeholder="Enter your user-id"
+            ref={userIDElement}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="title" className="form-label">
+            Post Title
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="title"
+            placeholder="Enter your post title"
+            ref={titleElement}
+          />
+        </div>
+        <div className="form-floating">
+          <textarea
+            className="form-control"
+            id="floatingTextarea"
+            ref={bodyElement}
+          ></textarea>
+          <label htmlFor="floatingTextarea">Description about your Post</label>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="reaction" className="form-label">
+            reaction Expected
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            id="reaction"
+            placeholder="How many people react in your post"
+            ref={reactionElement}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="tag" className="form-label">
+            Tags
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="tag"
+            placeholder="define some tag best fit with your post"
+            ref={tagsElement}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Post my Content
+        </button>
+      </form>
+    </>
+  );
+}
+export default CreatePost;
