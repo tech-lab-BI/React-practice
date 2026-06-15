@@ -1,7 +1,7 @@
 import {useSelector} from 'react-redux'
 
 const Display = () => {
-  const counter = useSelector((store) => store.val);
+  const counter = useSelector((store) => store.counter.val);
 
   return <p className="card-text">Counter current value : {counter}</p>;
 };

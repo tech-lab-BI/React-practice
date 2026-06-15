@@ -5,14 +5,15 @@ import Header from "./components/Header";
 import Display from "./components/Display";
 import Controls from "./components/Controls";
 import PrivacyMessage from "./components/PrivacyMessage";
+import { useSelector } from "react-redux";
 
 function App() {
+  const privacy = useSelector((store) => store.privacy);
   return (
     <>
       <Container>
         <Header/>
-        <Display/>
-        {/* {false ? <PrivacyMessage/>:<Display/>} */}
+        {privacy ? <PrivacyMessage/>:<Display/>}
         <Controls/>
       </Container>
     </>

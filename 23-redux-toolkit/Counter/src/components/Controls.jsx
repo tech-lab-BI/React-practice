@@ -1,9 +1,10 @@
 import {useDispatch} from 'react-redux'
-import { CounterActions } from '../store';
+import { CounterActions, PrivacyActions } from '../store';
 import { useRef } from 'react';
 
 const Controls = () => {
   const counterDispatch = useDispatch();
+  const privacyDispatch = useDispatch();
   const numElement = useRef();
 
   const handleIncrement = () => {
@@ -21,6 +22,7 @@ const Controls = () => {
     numElement.current.value = "";
   };
   const handlePrivacy = () => {
+    privacyDispatch(PrivacyActions.toggle());
   };
 
   return (
