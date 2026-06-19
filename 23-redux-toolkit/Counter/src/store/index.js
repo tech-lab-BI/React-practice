@@ -1,32 +1,6 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-
-const counterSlice = createSlice({
-  name: "counter", //redux create counter/increment
-  initialState: { val: 0 },
-  reducers: {
-    increment: (state) => {
-      state.val++;
-    },
-    decrement: (state) => {
-      state.val--;
-    },
-    add: (state, action) => {
-      state.val += Number(action.payload);
-    },
-    sub: (state, action) => {
-      state.val -= Number(action.payload);
-    },
-  },
-});
-const privacySlice = createSlice({
-  name: "privacy",
-  initialState: false,
-  reducers: {
-    toggle: (state) => {
-      return !state; ///if use object value change inside , no need return but in this case must need return
-    },
-  },
-});
+import counterSlice from "./counterSlice";
+import privacySlice from "./privacySlice";
 
 const CounterStore = configureStore({
   reducer: {
@@ -35,8 +9,6 @@ const CounterStore = configureStore({
   },
 });
 
-export const PrivacyActions = privacySlice.actions;
-export const CounterActions = counterSlice.actions;
 export default CounterStore;
 
 /*
