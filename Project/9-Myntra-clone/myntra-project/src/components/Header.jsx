@@ -2,19 +2,22 @@ import { MdScreenSearchDesktop } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { GrFavorite } from "react-icons/gr";
 import { IoBagCheck } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const bag = useSelector((store) => store.bag);
   return (
     <>
       <header>
         <div className="logo_container">
-          <a href="#">
+          <Link to="/">
             <img
               className="myntra_home"
               src="images/myntra_logo.webp"
               alt="Myntra Home"
             />
-          </a>
+          </Link>
         </div>
         <span className="nav_bar">
           <a href="#">Men</a>
@@ -27,7 +30,7 @@ const Header = () => {
           </a>
         </span>
         <div className="search_bar">
-          <MdScreenSearchDesktop size={30}/>
+          <MdScreenSearchDesktop size={30} />
           <input
             className="search_input"
             placeholder="Search for products, brands and more"
@@ -35,20 +38,20 @@ const Header = () => {
         </div>
         <div className="action_bar">
           <div className="action_container">
-            <CgProfile size={25}/>
+            <CgProfile size={25} />
             <span className="action_name">Profile</span>
           </div>
 
           <div className="action_container">
-            <GrFavorite size={25}/>
+            <GrFavorite size={25} />
             <span className="action_name">Wishlist</span>
           </div>
 
-          <a className="action_container" href="pages/bag.html">
-            <IoBagCheck size={25}/>
+          <Link className="action_container" to="/bag">
+            <IoBagCheck size={25} />
             <span className="action_name">Bag</span>
-            <span className="bag-item-count">0</span>
-          </a>
+            <span className="bag-item-count">{bag.length}</span>
+          </Link>
         </div>
       </header>
     </>

@@ -343,7 +343,7 @@ a.action_container:link {
   width: 64%;
   padding-right: 20px;
   border-right: 1px solid #eaeaec;
-  padding-top: 32px;
+  padding-top: 20px;
   color: #282c3f;
   font-size: 13px;
   line-height: 1.42857143;
@@ -351,7 +351,7 @@ a.action_container:link {
 
 .bag-page {
   width: 75%;
-  margin-left: 12.5%;
+  margin-left: 10%;
 }
 
 .bag-summary {
@@ -365,7 +365,7 @@ a.action_container:link {
 }
 
 .bag-details-container {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .price-header {
@@ -473,4 +473,8 @@ a.action_container:link {
   width: 14px;
   height: 14px;
   cursor: pointer;
+}
+
+.loader {
+  margin: 50px;
 }
